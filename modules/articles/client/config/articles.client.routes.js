@@ -1,8 +1,8 @@
 'use strict';
 
 // Setting up route
-angular.module('articles').config(['$stateProvider',
-  function ($stateProvider) {
+angular.module('articles').config(['$httpProvider', '$stateProvider',
+  function ($httpProvider, $stateProvider) {
     // Articles state routing
     $stateProvider
       .state('articles', {
@@ -32,5 +32,13 @@ angular.module('articles').config(['$stateProvider',
           roles: ['user', 'admin']
         }
       });
+      if (!$httpProvider.defaults.headers.get)
+      {
+        $httpProvider.defaults.headers.get = {};
+      }
+      $httpProvider.defaults.headers.get['If-Modified-Since'] = 'Sun, 30 May 1993 12:12:12 GMT';
+      $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';  
+      $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';  
+
   }
 ]);

@@ -1,14 +1,11 @@
 'use strict';
 
+var defaultEnvConfig = require('./default');
+
 module.exports = {
-  secure: {
-    ssl: true,
-    privateKey: './config/sslcerts/key.pem',
-    certificate: './config/sslcerts/cert.pem'
-  },
-  port: process.env.PORT || 8443,
+  port: process.env.PORT || 80,
   db: {
-    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean',
+    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean-dev',
     options: {
       user: '',
       pass: ''
@@ -18,12 +15,15 @@ module.exports = {
   },
   log: {
     // Can specify one of 'combined', 'common', 'dev', 'short', 'tiny'
-    format: 'combined',
+    format: 'dev',
     // Stream defaults to process.stdout
     // Uncomment to enable logging to a log on the file system
     options: {
-      stream: 'access.log'
+      //stream: 'access.log'
     }
+  },
+  app: {
+    title: defaultEnvConfig.app.title + ' - Production Environment'
   },
   facebook: {
     clientID: process.env.FACEBOOK_ID || 'APP_ID',
@@ -54,7 +54,7 @@ module.exports = {
     clientID: process.env.PAYPAL_ID || 'CLIENT_ID',
     clientSecret: process.env.PAYPAL_SECRET || 'CLIENT_SECRET',
     callbackURL: '/api/auth/paypal/callback',
-    sandbox: false
+    sandbox: true
   },
   mailer: {
     from: process.env.MAILER_FROM || 'MAILER_FROM',
@@ -66,5 +66,6 @@ module.exports = {
       }
     }
   },
+  livereload: true,
   seedDB: process.env.MONGO_SEED || false
 };

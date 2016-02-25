@@ -247,6 +247,13 @@ module.exports.init = function (db) {
   // Initialize modules static client routes
   this.initModulesClientRoutes(app);
 
+  
+  //Initilaize static files routes
+  app.use('/', express.static(path.resolve('./public')));
+  app.use('/staticimg', express.static(path.resolve('./modules/core/client/img/selfpride')));
+  app.use('/music', express.static(path.resolve('./modules/core/client/music')));
+  app.use('/articlepartials', express.static(path.resolve('./modules/articles/client/views/partials')));
+
   // Initialize modules server authorization policies
   this.initModulesServerPolicies(app);
 

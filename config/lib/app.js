@@ -4,9 +4,9 @@
  * Module dependencies.
  */
 var config = require('../config'),
-  mongoose = require('./mongoose'),
-  express = require('./express'),
-  chalk = require('chalk');
+ mongoose = require('./mongoose'),
+ express = require('./express'),
+ chalk = require('chalk');
 
 // Initialize Models
 mongoose.loadModels();
@@ -16,6 +16,8 @@ if (config.seedDB) {
   require('./seed');
 }
 
+
+
 module.exports.loadModels = function loadModels() {
   mongoose.loadModels();
 };
@@ -24,6 +26,8 @@ module.exports.init = function init(callback) {
   mongoose.connect(function (db) {
     // Initialize express
     var app = express.init(db);
+    //Initialize static
+
     if (callback) callback(app, db, config);
 
   });

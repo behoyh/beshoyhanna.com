@@ -14,7 +14,6 @@ var path = require('path'),
 exports.create = function (req, res) {
   var article = new Article(req.body);
   article.user = req.user;
-
   article.save(function (err) {
     if (err) {
       return res.status(400).send({
@@ -23,7 +22,7 @@ exports.create = function (req, res) {
     } else {
       res.json(article);
     }
-  });
+  }); 
 };
 
 /**

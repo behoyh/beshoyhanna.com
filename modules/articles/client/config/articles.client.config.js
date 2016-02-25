@@ -13,7 +13,7 @@ angular.module('articles').run(['Menus',
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'articles', {
-      title: 'List Articles',
+      title: 'All Articles',
       state: 'articles.list'
     });
 
@@ -21,7 +21,7 @@ angular.module('articles').run(['Menus',
     Menus.addSubMenuItem('topbar', 'articles', {
       title: 'Create Articles',
       state: 'articles.create',
-      roles: ['user']
+      roles: ['admin']
     });
   }
 ]);

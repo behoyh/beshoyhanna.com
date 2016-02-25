@@ -1,9 +1,19 @@
-.content {
-  margin-top: 50px;
-}
+
 .undecorated-link:hover {
   text-decoration: none;
 }
+.footme
+{
+  margin-bottom:70px;
+}
+   .ta-editor
+   {
+    height:auto!important;
+   }
+  .ta-hidden-input
+  {
+    display:none;
+  }
 [ng\:cloak],
 [ng-cloak],
 [x-ng-cloak],

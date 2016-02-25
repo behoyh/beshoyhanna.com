@@ -3,6 +3,7 @@
 var defaultEnvConfig = require('./default');
 
 module.exports = {
+  port: process.env.PORT || 80,
   db: {
     uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean-dev',
     options: {
@@ -22,7 +23,7 @@ module.exports = {
     }
   },
   app: {
-    title: defaultEnvConfig.app.title + ' - Development Environment'
+    title:  "Tech News, Blog, And Project Tips. http://beshoyhanna.com"
   },
   facebook: {
     clientID: process.env.FACEBOOK_ID || 'APP_ID',

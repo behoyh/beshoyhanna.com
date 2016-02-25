@@ -22,8 +22,7 @@ var ArticleSchema = new Schema({
   },
   content: {
     type: String,
-    default: '',
-    trim: true
+    default: ''
   },
   user: {
     type: Schema.ObjectId,

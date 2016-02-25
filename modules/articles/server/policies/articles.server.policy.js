@@ -22,10 +22,22 @@ exports.invokeRolesPolicies = function () {
       permissions: '*'
     }]
   }, {
+    roles: ['admin','user'],
+    allows: [{
+      resources: '/api/comments',
+      permissions: '*'
+    }]
+  }, {
+    roles: ['guest'],
+    allows: [{
+      resources: '/api/comments',
+      permissions: 'get'
+    }]
+  }, {
     roles: ['user'],
     allows: [{
       resources: '/api/articles',
-      permissions: ['get', 'post']
+      permissions: ['get']
     }, {
       resources: '/api/articles/:articleId',
       permissions: ['get']
