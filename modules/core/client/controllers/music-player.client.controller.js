@@ -15,7 +15,7 @@
     function($scope, Player)
     {
        var musicplayer = document.getElementById('musicplayer');
-         var m = Math.floor(Math.random() * 14);
+         var m = Math.floor(Math.random() * 15);
          musicplayer.src = "/music/" + m.toString() + ".mp3";
 
 

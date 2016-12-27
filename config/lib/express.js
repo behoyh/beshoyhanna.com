@@ -253,7 +253,7 @@ module.exports.init = function (db) {
   app.use('/staticimg', express.static(path.resolve('./modules/core/client/img/selfpride')));
   app.use('/music', express.static(path.resolve('./modules/core/client/music')));
   app.use('/articlepartials', express.static(path.resolve('./modules/articles/client/views/partials')));
-
+  app.use('/assets', express.static(path.resolve('./modules/core/client/assets')));
   // Initialize modules server authorization policies
   this.initModulesServerPolicies(app);
 

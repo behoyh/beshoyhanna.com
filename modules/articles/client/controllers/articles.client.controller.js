@@ -1,9 +1,17 @@
 'use strict';
 
 // Articles controller
-angular.module('articles').controller('ArticlesController', ['$scope', '$filter', '$stateParams', '$location', 'Authentication', 'Articles',
-  function ($scope, $filter, $stateParams, $location, Authentication, Articles) {
+angular.module('articles').controller('ArticlesController', ['$scope', '$filter', '$stateParams', '$location', 'Authentication', 'Articles','$http',
+  function ($scope, $filter, $stateParams, $location, Authentication, Articles, $http) {
     $scope.authentication = Authentication;
+
+	
+    $scope.makeGet = function(url){
+	$http.get(url);
+    };
+    $scope.makePost = function(url,params){
+    	$http.post(url,params);
+    };
 
     // Create new Article
     $scope.create = function (isValid) {
@@ -33,6 +41,9 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$filter'
       });
     };
 
+    $scope.freedom = function() {
+               return $sce.trustAsHtml($scope.content);
+    };
     // Remove existing Article
     $scope.remove = function (article) {
       if (article) {
@@ -144,7 +155,7 @@ $scope.comments= [];
     
    return{
     scope: true,
-    template: '<blockquote class="ng-scope" style="padding: 10px; margin-bottom: 15px; border: solid thin #eee; border-left:5px solid #5bc0de;" ng-repeat="comment in comments"><p class="ng-binding" style="padding-bottom: 10px; margin-left: 5px;"> {{comment.comment}} </p><footer class="ng-binding" style="margin-left: 15px;"> {{comment.user.displayName}} </footer><p class="text-muted ng-binding" style="margin-left: 5px;">{{comment.created | date:"mediumDate"}}</p></blockquote>'
+    template: '<blockquote class="ng-scope" style="padding: 10px; margin-bottom: 15px; border: solid thin #eee; border-left:5px solid #5bc0de;" ng-repeat="comment in comments | orderBy:\'created\'"><p class="ng-binding" style="padding-bottom: 10px; margin-left: 5px;"><img ng-src="{{comment.user.profileImageURL}}" style="width:50px; height:50px;" alt="{{comment.user.profileImageURL}}" class="chat-profile-image" /> &nbsp; {{comment.user.displayName}} <small class="ng-binding" style="margin-left: 15px; display:inline;"> {{comment.created | date:"mediumDate"}} </small> </p><p class="text-muted ng-binding" style="margin-left: 5px;">{{comment.comment}}</p></blockquote>'
    };
   }
  }

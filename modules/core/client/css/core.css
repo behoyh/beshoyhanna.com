@@ -1,4 +1,11 @@
-
+@media (min-width: 768px) {
+.navbar-nav>li>a {
+background-color:#FFFFFF;
+}
+.navbar-brand{
+background-color:#FFFFFF;
+}
+}
 .undecorated-link:hover {
   text-decoration: none;
 }
@@ -45,3 +52,7 @@ a:hover .header-profile-image {
 .has-error .help-inline.error-text {
   display: inline;
 }
+.fa-stack {font-family:"Montserrat","Helvetica Neue",Helvetica,Arial, sans-serif;}
+.comment-indicator{text-align:center; position:absolute; bottom: 0px; right:0px; padding:10px; }
+.fa-fill{color:#5bc0de; font-weight:500;}
+.fa-blank{color:#FFFFFF; font-weight: 500;}

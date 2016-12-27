@@ -12,7 +12,7 @@ var path = require('path'),
   async = require('async'),
   crypto = require('crypto');
 
-var smtpTransport = nodemailer.createTransport(config.mailer.options);
+  var smtpTransport = nodemailer.createTransport();
 
 /**
  * Forgot for reset password (forgot POST)
@@ -68,18 +68,19 @@ exports.forgot = function (req, res, next) {
     function (emailHTML, user, done) {
       var mailOptions = {
         to: user.email,
-        from: config.mailer.from,
+        from: '"Beshoy Hanna" <me@beshoyhanna.com>',
         subject: 'Password Reset',
         html: emailHTML
       };
       smtpTransport.sendMail(mailOptions, function (err) {
         if (!err) {
           res.send({
-            message: 'An email has been sent to the provided email with further instructions.'
+            message: 'An email has been sent to the provided email with further instructions. The email is likely in your "Junk" folder so please check there first.'
           });
         } else {
-          return res.status(400).send({
-            message: 'Failure sending email'
+          return res.status(500).send({
+            message: 'Failure sending email',
+	    error: err
           });
         }
 

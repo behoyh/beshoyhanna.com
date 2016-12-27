@@ -10,8 +10,8 @@ var passport = require('passport'),
 module.exports = function (config) {
   // Use linkedin strategy
   passport.use(new LinkedInStrategy({
-      consumerKey: config.linkedin.clientID,
-      consumerSecret: config.linkedin.clientSecret,
+      consumerKey: '77mp4zp620e4xg',
+      consumerSecret: 'n7ZIF2C5QZnhswin',
       callbackURL: config.linkedin.callbackURL,
       passReqToCallback: true,
       profileFields: ['id', 'first-name', 'last-name', 'email-address', 'picture-url']

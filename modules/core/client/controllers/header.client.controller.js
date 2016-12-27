@@ -9,6 +9,8 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
     // Get the topbar menu
     $scope.menu = Menus.getMenu('topbar');
 
+    $scope.rColor = 'rgb(' + (Math.floor(Math.random() * 256)) + ', '+ (Math.floor(Math.random() * 256)) + ', '+ (Math.floor(Math.random() * 256)) + ')';
+
     // Toggle the menu items
     $scope.isCollapsed = false;
     $scope.toggleCollapsibleMenu = function () {

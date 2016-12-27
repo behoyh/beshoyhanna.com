@@ -17,6 +17,12 @@ angular.module('articles').run(['Menus',
       state: 'articles.list'
     });
 
+    // Add the dropdown list item
+    Menus.addSubMenuItem('topbar', 'articles', {
+      title: 'About Me',
+      state: 'articles.aboutme'
+    });
+
     // Add the dropdown create item
     Menus.addSubMenuItem('topbar', 'articles', {
       title: 'Create Articles',
