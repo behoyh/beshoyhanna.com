@@ -5,12 +5,13 @@
  */
 var _ = require('lodash'),
   defaultAssets = require('./config/assets/default'),
-  testAssets = require('./config/assets/test');
+  testAssets = require('./config/assets/test'),
+  testConfig = require('./config/env/test'),
+  karmaReporters = ['mocha'];
 
 // Karma configuration
 module.exports = function (karmaConfig) {
-  karmaConfig.set({
-    // Frameworks to use
+  var configuration = {
     frameworks: ['jasmine'],
 
     preprocessors: {
@@ -22,7 +23,7 @@ module.exports = function (karmaConfig) {
 
       cacheIdFromPath: function (filepath) {
         return filepath;
-      },
+      }
     },
 
     // List of files / patterns to load in the browser
@@ -30,7 +31,7 @@ module.exports = function (karmaConfig) {
 
     // Test results reporter to use
     // Possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: ['progress'],
+    reporters: karmaReporters,
 
     // Web server port
     port: 9876,
@@ -53,7 +54,13 @@ module.exports = function (karmaConfig) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
 
     // If browser does not capture in given timeout [ms], kill it
     captureTimeout: 60000,
@@ -61,5 +68,11 @@ module.exports = function (karmaConfig) {
     // Continuous Integration mode
     // If true, it capture browsers, run tests and exit
     singleRun: true
-  });
+  };
+
+  if (process.env.TRAVIS) {
+    configuration.browsers = ['Chrome_travis_ci'];
+  }
+
+  karmaConfig.set(configuration);
 };

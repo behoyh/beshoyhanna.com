@@ -1,10 +1,11 @@
 'use strict';
 
 /**
- * Module dependencies.
+ * Module dependencies
  */
 var articlesPolicy = require('../policies/articles.server.policy'),
   articles = require('../controllers/articles.server.controller');
+
 module.exports = function (app) {
   // Articles collection routes
   app.route('/api/articles').all(articlesPolicy.isAllowed)
@@ -16,7 +17,6 @@ module.exports = function (app) {
     .get(articles.read)
     .put(articles.update)
     .delete(articles.delete);
-
 
   // Finish by binding the article middleware
   app.param('articleId', articles.articleByID);
