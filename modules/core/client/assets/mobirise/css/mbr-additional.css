@@ -1,0 +1,23 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+
+
+#header1-3 H1 {
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  color: #efefef;
+}
+#header1-3 SPAN {
+  font-size: 72px;
+  font-family: 'Open Sans', sans-serif;
+}
+#content5-7 .mbr-header .mbr-header__text {
+  text-align: center;
+  color: #fff;
+}
+#content5-7 .mbr-header .mbr-header__subtext {
+  text-align: center;
+  color: #fff;
+}
+#content5-7 .mbr-article {
+  color: #fff;
+}
