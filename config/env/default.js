@@ -3,7 +3,7 @@
 module.exports = {
   app: {
     title: 'beshoyhanna.com',
-    description: 'Technology News, Blog, And Project Tips. beshoyhanna.com',
+    description: 'Tech News, Blog, And Project Tips. http://beshoyhanna.com',
     keywords: 'beshoy hanna tech news blog project tips',
     googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'GOOGLE_ANALYTICS_TRACKING_ID'
   },

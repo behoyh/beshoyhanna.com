@@ -47,6 +47,10 @@
         resolve: {
           articleResolve: getArticle
         }
+      })
+      .state('articles.aboutme', {
+        url: '/aboutme',
+        templateUrl: 'modules/articles/client/views/aboutme-articles.client.view.html'
       });
   }
 

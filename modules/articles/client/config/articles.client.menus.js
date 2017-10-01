@@ -15,10 +15,15 @@
       roles: ['*']
     });
 
-    // Add the dropdown list item
+    // Add the dropdown list items
     menuService.addSubMenuItem('topbar', 'articles', {
-      title: 'List Articles',
+      title: 'All Articles',
       state: 'articles.list',
+      roles: ['*']
+    });
+    menuService.addSubMenuItem('topbar', 'aboutme', {
+      title: 'About Me',
+      state: 'articles.aboutme',
       roles: ['*']
     });
   }
