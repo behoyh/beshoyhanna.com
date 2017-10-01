@@ -21,7 +21,7 @@
       state: 'articles.list',
       roles: ['*']
     });
-    menuService.addSubMenuItem('topbar', 'aboutme', {
+    menuService.addSubMenuItem('topbar', 'articles', {
       title: 'About Me',
       state: 'articles.aboutme',
       roles: ['*']

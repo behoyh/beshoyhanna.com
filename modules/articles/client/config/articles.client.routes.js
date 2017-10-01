@@ -41,4 +41,14 @@
       articleId: $stateParams.articleId
     }).$promise;
   }
+
+  getArticle.$inject = ['$stateParams', 'CommentsService'];  
+
+  function getComments($stateParams, CommentsService)
+  {
+    return CommentsService.get({
+      articleId: $stateParams.articleId
+    })
+  }
+
 }());
