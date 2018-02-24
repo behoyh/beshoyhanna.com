@@ -13,10 +13,3 @@
   </small>
   <p class="lead" ng-bind="vm.article.content"></p>
 </section>
-<section ng-controller="CommentsController" class="footme" ng-init="find()">
-  <comments></comments>
-  <form name="commentForm" style="margin-bottom:15px;" class="form-horizontal" ng-submit="create(commentForm.$valid)" novalidate>
-    <textarea name="comment" ng-model="comment" id="comment" class="form-control" cols="30" rows="10" placeholder="Comment"></textarea>
-    <button style="margin-top:10px;" type="submit" class="btn btn-primary btn-lg">Comment</button>
-  </form>
-</section>
