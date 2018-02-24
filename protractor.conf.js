@@ -1,6 +1,8 @@
 'use strict';
 
 // Protractor configuration
-exports.config = {
+var config = {
   specs: ['modules/*/tests/e2e/*.js']
 };
+
+exports.config = config;

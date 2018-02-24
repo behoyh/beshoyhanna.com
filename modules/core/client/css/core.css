@@ -1,6 +1,10 @@
+html{
+  margin-bottom: 55px;
+}
+
 @media (min-width: 768px) {
 .navbar-nav>li>a {
-background-color:#FFFFFF;
+  background-color:#FFFFFF;
 }
 .navbar-brand{
 background-color:#FFFFFF;

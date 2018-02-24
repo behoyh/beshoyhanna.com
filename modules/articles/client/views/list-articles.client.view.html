@@ -1,32 +1,18 @@
-<section ng-controller="ArticlesController" ng-init="find()" class="container footme">
+<section>
   <div class="page-header">
     <h1>Articles</h1>
   </div>
-
-    <input style="margin-bottom:5px;" class="form-control" type="text" ng-model="search" placeholder="Search" />
   <div class="list-group">
-
-    <a ng-controller="CommentsController" ng-init="getCount(article._id)" ng-repeat="article in articles | filter:search:strict" ui-sref="articles.view({articleId: article._id})" class="list-group-item" style="overflow:hidden; max-height:300px; position:relative;">
+    <a ng-repeat="article in vm.articles" ui-sref="articles.view({ articleId: article._id })" class="list-group-item">
       <small class="list-group-item-text">
         Posted on
-        <span ng-bind="article.created | date:'fullDate'"></span>
+        <span ng-bind="article.created | date:'mediumDate'"></span>
         by
-        <span ng-bind="article.user.displayName"></span>
-      </small> 
-
-      <h3 class="list-group-item-heading" ng-bind="article.title"></h3>
-      <!-- <p class="list-group-item-text" ng-bind-html="article.content"></p> -->
-      
-      <div class="comment-indicator">
-     <span class="fa-stack fa-2x text-center">
-      <i ng-class="count > 0? 'fa fa-circle fa-stack-2x fa-fill':'fa fa-circle fa-stack-2x fa-blank'"></i>
-      <i ng-show="count==0"  style="font-weight:100" class="fa fa-circle-thin fa-stack-2x"></i>
-<strong ng-class="count > 0? 'fa-stack fa-stack-1x fa-stack-text fa-inverse': 'fa-stack-1x fa-stack-text'">{{count}}</strong>
-     </span>
-     </div>
+        <span ng-if="article.user" ng-bind="article.user.displayName"></span>
+        <span ng-if="!article.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="article.title"></h4>
+      <p class="list-group-item-text" ng-bind="article.content"></p>
     </a>
-  </div>
-  <div class="alert alert-warning text-center" ng-if="articles.$resolved && !articles.length">
-    No articles yet, why don't you <a ui-sref="articles.create">create one</a>?
   </div>
 </section>
