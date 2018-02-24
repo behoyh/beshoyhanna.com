@@ -1,4 +1,5 @@
 [![MEAN.JS Logo](http://meanjs.org/img/logo-small.png)](http://meanjs.org/)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fbehoyh%2Fbeshoyhanna.com.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fbehoyh%2Fbeshoyhanna.com?ref=badge_shield)
 
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/meanjs/mean?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/meanjs/mean.svg?branch=master)](https://travis-ci.org/meanjs/mean)
@@ -227,6 +228,3 @@ We welcome pull requests from the community! Just be sure to read the [contribut
 ## Credits
 Inspired by the great work of [Madhusudhan Srinivasa](https://github.com/madhums/)
 The MEAN name was coined by [Valeri Karpov](http://blog.mongodb.org/post/49262866911/the-mean-stack-mongodb-expressjs-angularjs-and).
-
-## License
-[The MIT License](LICENSE.md)
