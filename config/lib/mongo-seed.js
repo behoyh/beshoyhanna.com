@@ -63,8 +63,8 @@ function seed(collection, options) {
   options = _.merge(options || {}, collection.options || {});
 
   return new Promise(function (resolve, reject) {
-    const Model = mongoose.model(collection.model);
-    const docs = collection.docs;
+    var Model = mongoose.model(collection.model);
+    var docs = collection.docs;
 
     var skipWhen = collection.skip ? collection.skip.when : null;
 

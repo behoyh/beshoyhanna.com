@@ -11,10 +11,10 @@ module.exports = {
     promise: global.Promise
   },
   port: process.env.PORT || 3000,
-  host: process.env.HOST || '0.0.0.0',
+  host: process.env.HOST || '127.0.0.1',
   // DOMAIN config should be set to the fully qualified application accessible
   // URL. For example: https://www.myapp.com (including port if required).
-  domain: process.env.DOMAIN,
+  domain: "http://beshoyhanna.com",
   // Session Cookie settings
   sessionCookie: {
     // session expiration is set by default to 24 hours
@@ -28,7 +28,7 @@ module.exports = {
     secure: false
   },
   // sessionSecret should be changed for security measures and concerns
-  sessionSecret: process.env.SESSION_SECRET || 'MEAN',
+  sessionSecret: process.env.SESSION_SECRET || 'a820b003-030a-442c-bcaa-3e5d21f297ecTHE_BEST_SUPERAWSOMESECRET_EVAAAAA896291aa-8d7a-47f6-aa55-f409d8a1ac1b',
   // sessionKey is the cookie session name
   sessionKey: 'sessionId',
   sessionCollection: 'sessions',
