@@ -14,6 +14,7 @@ export class PostDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
   public ngOnInit() {
+    this.data.date = new Date().toISOString(); 
   }
 
   public onNoClick(): void {
