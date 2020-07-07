@@ -5,7 +5,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import * as sha from 'js-sha512';
 import { Store } from '@ngxs/store';
 import { SetUser } from '../shared/app.actions';
-import { Navigate } from '@ngxs/router-plugin';
 
 
 @Injectable({
@@ -30,21 +29,21 @@ export class ProfileService {
   }
 
   public SignInGoogle() {
-    return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider().setCustomParameters({
+    return this.afAuth.signInWithPopup(new auth.GoogleAuthProvider().setCustomParameters({
       prompt: 'select_account'
     }));
   }
 
   public SignOut() {
-    this.afAuth.auth.signOut();
+    this.afAuth.signOut();
   }
 
   public Login(email: string, password: string) {
-    return this.afAuth.auth.signInAndRetrieveDataWithEmailAndPassword(email, password);
+    return this.afAuth.createUserWithEmailAndPassword(email, password);
   }
 
   public CreateUser(name: string, email: string, password: string) {
-    return this.afAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email, sha.sha512(password));
+    return this.afAuth.createUserWithEmailAndPassword(email, sha.sha512(password));
   }
 
   public GetUser(id: string) {

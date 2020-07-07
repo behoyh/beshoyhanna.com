@@ -30,12 +30,12 @@ return this.http.post("https://api.github.com/repos/behoyh/AngularFirestoreK8s/f
       'allow_signup': 'true'
     });
 
-    return this.afAuth.auth.signInWithPopup(provider);
+    return this.afAuth.signInWithPopup(provider);
   }
 
   public LinkToAccount(email, password, pendingCred) {
     // Get sign-in methods for this email.
-    this.afAuth.auth.fetchSignInMethodsForEmail(email).then((methods) => {
+    this.afAuth.fetchSignInMethodsForEmail(email).then((methods) => {
       // Step 3.
       // If the user has several sign-in methods,
       // the first method in the list will be the "recommended" method to use.
@@ -43,7 +43,7 @@ return this.http.post("https://api.github.com/repos/behoyh/AngularFirestoreK8s/f
         // Asks the user his password.
         // In real scenario, you should handle this asynchronously.
         // TODO: Setup a extra feild with a password prompt to take in a password instead of hardcoded string.
-        this.afAuth.auth.signInWithEmailAndPassword(email, password).then((user:any) => {
+        this.afAuth.signInWithEmailAndPassword(email, password).then((user:any) => {
           // Step 4a.
           return user.link(pendingCred);
         }).then(function () {

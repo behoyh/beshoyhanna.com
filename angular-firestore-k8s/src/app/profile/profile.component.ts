@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { auth } from 'firebase';
 import { ProfileService } from './profile.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Select, Store } from '@ngxs/store';
 import { SetUser } from '../shared/app.actions';
 import { AppState } from '../shared/app.state';
