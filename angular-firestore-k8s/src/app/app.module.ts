@@ -67,7 +67,7 @@ import { HttpModule } from '@angular/http';
     MatCardModule,
     MatIconModule,
     AppRouterModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([], { relativeLinkResolution: 'legacy' }),
     MatTabsModule,
     MatStepperModule,
     ReactiveFormsModule,
