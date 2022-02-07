@@ -22,12 +22,11 @@ export class PostsComponent implements OnInit {
   @Select(AppState) user$;
 
   constructor(private store: Store, private postService: PostService, userService: ProfileService, private dialog: MatDialog, private snackBar: MatSnackBar) {
-    this.items = postService.GetPosts().valueChanges();
-
+    this.items = postService.GetPosts();
     this.user$.subscribe((user) => {
-      userService.GetUser(user.uid).get().subscribe((doc) => {
+      userService.GetUser(user.uid).then((doc) => {
         if (doc && doc.data() && doc.data().admin) {
-          this.admin = doc.data().admin
+          this.admin = doc.data().admin;
         }
       });
     });

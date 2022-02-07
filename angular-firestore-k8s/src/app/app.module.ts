@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { FirestoreModule, getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { StorageModule } from '@angular/fire/storage';
+import { AuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
@@ -40,52 +40,52 @@ import { OrderModule } from 'ngx-order-pipe';
 import { HttpModule } from '@angular/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PostDialogComponent,
-    ProfileComponent,
-    PostsComponent,
-    AuthenticationComponent,
-    PostComponent
-  ],
-  imports: [
-    BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase, 'blog-client'),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
-    AngularFireStorageModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatDialogModule,
-    MatSnackBarModule,
-    MatGridListModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatIconModule,
-    AppRouterModule,
-    RouterModule.forRoot([], { relativeLinkResolution: 'legacy' }),
-    MatTabsModule,
-    MatStepperModule,
-    ReactiveFormsModule,
-    NgxsModule.forRoot([
-      AppState
-    ],{ developmentMode: !environment.production }),
-    NgxsStoragePluginModule.forRoot(),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot(),
-    NgxsRouterPluginModule.forRoot(),
-    AngularEditorModule,
-    HttpClientModule,
-    OrderModule,
-    HttpModule
-  ],
-  entryComponents: [PostDialogComponent],
-  exports: [MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatDialogModule, MatGridListModule, MatToolbarModule, MatCardModule, MatIconModule, MatTabsModule, MatStepperModule],
-  providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        PostDialogComponent,
+        ProfileComponent,
+        PostsComponent,
+        AuthenticationComponent,
+        PostComponent
+    ],
+    imports: [
+        BrowserModule,
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideFirestore(() => getFirestore()),
+        FirestoreModule,
+        AuthModule,
+        StorageModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        MatGridListModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatIconModule,
+        AppRouterModule,
+        RouterModule.forRoot([], { relativeLinkResolution: 'legacy' }),
+        MatTabsModule,
+        MatStepperModule,
+        ReactiveFormsModule,
+        NgxsModule.forRoot([
+            AppState
+        ], { developmentMode: !environment.production }),
+        NgxsStoragePluginModule.forRoot(),
+        NgxsReduxDevtoolsPluginModule.forRoot(),
+        NgxsLoggerPluginModule.forRoot(),
+        NgxsRouterPluginModule.forRoot(),
+        AngularEditorModule,
+        HttpClientModule,
+        OrderModule,
+        HttpModule
+    ],
+    exports: [MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatDialogModule, MatGridListModule, MatToolbarModule, MatCardModule, MatIconModule, MatTabsModule, MatStepperModule],
+    providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -28,8 +28,7 @@ export class PostComponent implements OnInit {
   }
 
   LoadPost(post: string): any {
-    this.service.GetPost(post).get().subscribe((post) => {
-      debugger;
+    this.service.GetPost(post).then((post) => {
       this.post = post.data();
       this.post.body = this.sanitizer.bypassSecurityTrustHtml(this.post.body)
     });
