@@ -78,3 +78,5 @@ config/lib/mongo-seed.js
 config/assets/production.js
 
 config/env/default.js
+
+.angular

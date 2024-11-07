@@ -1,0 +1,48 @@
+.cdk-overlay-pane
+  {
+    max-width: 100vw!important;
+  }
+
+  .pointer{
+    cursor: pointer;
+}
+
+.market-ad {
+  display: block;
+  width: 100%;
+  padding-top: 56.99152542%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  box-shadow: none;
+  overflow: hidden;
+  z-index: 98;
+  background-image: url(/assets/static/market_ad_3.png);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.market-ad .card-body {
+  position: absolute;
+  bottom: 0;
+  width: 100% !important;
+  padding: 0;
+  background-position: bottom !important;
+  background-size: cover !important;
+  z-index: 299;
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.market-ad .content {
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.5);
+  filter: blur(3.5px) !important;
+  -webkit-filter: blur(3.5px) !important;
+  -ms-filter: blur(3.5px) !important;
+  -moz-filter: blur(3.5px) !important;
+  position: absolute;
+  bottom: 0px;
+  width: 100% !important;
+  background-position: bottom !important;
+  background-size: cover !important;
+  z-index: 199;
+}
