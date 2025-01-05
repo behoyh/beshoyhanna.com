@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { UserCredential } from '@angular/fire/auth';
 import { ProfileService } from './profile.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { Select, Store } from '@ngxs/store';
 import { SetUser } from '../shared/app.actions';
 import { AppState } from '../shared/app.state';
