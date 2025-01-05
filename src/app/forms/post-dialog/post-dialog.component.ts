@@ -9,6 +9,27 @@ import { DialogData } from './post-dialog-data';
 })
 export class PostDialogComponent implements OnInit {
 
+  public editorOptions: any = {
+    placeholderText: 'Edit Your Content Here!',
+    charCounterCount: true,
+    toolbarButtons: {
+      'moreText': {
+        'buttons': ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'clearFormatting']
+      },
+      'moreParagraph': {
+        'buttons': ['alignLeft', 'alignCenter', 'alignRight', 'alignJustify', 'formatOL', 'formatUL', 'paragraphFormat', 'lineHeight', 'outdent', 'indent', 'quote']
+      },
+      'moreRich': {
+        'buttons': ['insertLink', 'insertImage', 'insertTable', 'emoticons', 'specialCharacters', 'insertHR']
+      },
+      'moreMisc': {
+        'buttons': ['undo', 'redo', 'fullscreen', 'print', 'getPDF', 'spellChecker', 'selectAll', 'html', 'help'],
+        'align': 'right',
+        'buttonsVisible': 2
+      }
+    }
+  };
+
   constructor(
     public dialogRef: MatDialogRef<PostDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }

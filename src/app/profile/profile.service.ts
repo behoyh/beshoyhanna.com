@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { getAuth, GoogleAuthProvider } from '@angular/fire/auth';
-import { signInWithPopup, createUserWithEmailAndPassword } from 'firebase/auth';
+import { Auth, getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, onAuthStateChanged } from '@angular/fire/auth';
 import { Firestore, collectionData, collection, getDoc, doc } from '@angular/fire/firestore';
 import * as sha from 'js-sha512';
 import { Store } from '@ngxs/store';
@@ -12,9 +11,8 @@ import { SetUser } from '../shared/app.actions';
 })
 export class ProfileService {
 
-  constructor(private store: Store, private db: Firestore) {
-    var afAuth = getAuth();
-    afAuth.onAuthStateChanged(user => {
+  constructor(private store: Store, private db: Firestore, private auth: Auth) {
+    onAuthStateChanged(this.auth, user => {
       if (user) {
         this.store.dispatch([
           new SetUser(
@@ -30,21 +28,21 @@ export class ProfileService {
   }
 
   public SignInGoogle() {
-    return signInWithPopup(getAuth(), new GoogleAuthProvider().setCustomParameters({
+    return signInWithPopup(this.auth, new GoogleAuthProvider().setCustomParameters({
       prompt: 'select_account'
     }));
   }
 
   public SignOut() {
-    getAuth().signOut();
+    this.auth.signOut();
   }
 
   public Login(email: string, password: string) {
-    return createUserWithEmailAndPassword(getAuth(), email, password);
+    return createUserWithEmailAndPassword(this.auth, email, password);
   }
 
   public CreateUser(name: string, email: string, password: string) {
-    return createUserWithEmailAndPassword(getAuth(), email, sha.sha512(password));
+    return createUserWithEmailAndPassword(this.auth, email, sha.sha512(password));
   }
 
   public GetUser(id: string) {

@@ -8,7 +8,7 @@
       </mat-form-field>
     </div>
     <div class="row">
-        <angular-editor [(ngModel)]="data.body"></angular-editor>
+        <div [froalaEditor]="editorOptions" [(froalaModel)]="data.body"></div>
     </div>
     <div class="row">
       <mat-form-field appearance="outline">

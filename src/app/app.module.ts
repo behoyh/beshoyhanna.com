@@ -34,7 +34,7 @@ import { AppState } from './shared/app.state';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularEditorModule } from '@kolkov/angular-editor';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { PostComponent } from './post/post.component';
 import { OrderModule } from 'ngx-order-pipe';
 
@@ -78,7 +78,8 @@ import { OrderModule } from 'ngx-order-pipe';
         NgxsReduxDevtoolsPluginModule.forRoot(),
         NgxsLoggerPluginModule.forRoot(),
         NgxsRouterPluginModule.forRoot(),
-        AngularEditorModule,
+        FroalaEditorModule.forRoot(),
+        FroalaViewModule.forRoot(),
         HttpClientModule,
         OrderModule
     ],
