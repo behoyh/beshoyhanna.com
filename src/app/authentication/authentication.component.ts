@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../profile/profile.service';
 import { Store, Select } from '@ngxs/store';
 import { SetUser } from '../shared/app.actions';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 
 @Component({
