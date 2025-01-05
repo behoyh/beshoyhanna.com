@@ -80,3 +80,4 @@ config/assets/production.js
 config/env/default.js
 
 .angular
+dist
