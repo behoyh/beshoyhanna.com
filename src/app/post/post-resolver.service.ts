@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resolve, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable, of, EMPTY } from 'rxjs';
 import { Store } from '@ngxs/store';
 import { PostService } from '../posts/post.service';
@@ -10,7 +10,7 @@ import { Navigate } from '@ngxs/router-plugin';
 @Injectable({
   providedIn: 'root'
 })
-export class PostResolverService implements Resolve<string> {
+export class PostResolverService  {
 
   constructor(private postService: PostService, private store:Store) { }
 
