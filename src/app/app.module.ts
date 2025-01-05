@@ -37,7 +37,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { PostComponent } from './post/post.component';
 import { OrderModule } from 'ngx-order-pipe';
-import { HttpModule } from '@angular/http';
 
 @NgModule({
     declarations: [
@@ -81,8 +80,7 @@ import { HttpModule } from '@angular/http';
         NgxsRouterPluginModule.forRoot(),
         AngularEditorModule,
         HttpClientModule,
-        OrderModule,
-        HttpModule
+        OrderModule
     ],
     exports: [MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatDialogModule, MatGridListModule, MatToolbarModule, MatCardModule, MatIconModule, MatTabsModule, MatStepperModule],
     providers: [{ provide: APP_BASE_HREF, useValue: '/' }],

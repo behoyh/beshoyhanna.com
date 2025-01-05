@@ -3,7 +3,7 @@ import { ProfileService } from '../profile/profile.service';
 import { Store, Select } from '@ngxs/store';
 import { SetUser } from '../shared/app.actions';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-authentication',
@@ -55,16 +55,16 @@ export class AuthenticationComponent implements OnInit {
   OAuthUser(user: any): any {
     this.snackBar.open("Signed In " + user.displayName, "OKAY", { duration: 3000 })
   }
-  RegisterAuthForm = new FormGroup(
+  RegisterAuthForm = new UntypedFormGroup(
     {
-      name: new FormControl,
-      email: new FormControl,
-      password: new FormControl,
-      confirmPassword: new FormControl
+      name: new UntypedFormControl,
+      email: new UntypedFormControl,
+      password: new UntypedFormControl,
+      confirmPassword: new UntypedFormControl
     });
-  LoginAuthForm = new FormGroup({
-    email: new FormControl(),
-    password: new FormControl()
+  LoginAuthForm = new UntypedFormGroup({
+    email: new UntypedFormControl(),
+    password: new UntypedFormControl()
   });
 
   private onError(error) {

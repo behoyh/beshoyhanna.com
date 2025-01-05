@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { UserCredential } from 'firebase/auth';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { UserCredential } from '@angular/fire/auth';
 import { ProfileService } from './profile.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Select, Store } from '@ngxs/store';
@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
   parentRepo = "Ur Mom";
   @Select() router$;
 
-  user: UserCredential = { providerId: null, operationType:null, user: null };
+  user: any = null;
   GitHubLinked = false;
   GitHubUsername = '';
   GitHubAuthToken = '';
@@ -78,11 +78,11 @@ export class ProfileComponent implements OnInit {
     this.snackBar.open("Added User.", "OKAY", { duration: 3000 })
   }
 
-  GoogleAuthForm = new FormGroup(
+  GoogleAuthForm = new UntypedFormGroup(
     {
-      email: new FormControl,
-      password: new FormControl,
-      confirmPassword: new FormControl
+      email: new UntypedFormControl,
+      password: new UntypedFormControl,
+      confirmPassword: new UntypedFormControl
     });
 
   ngOnInit() {
@@ -91,7 +91,10 @@ export class ProfileComponent implements OnInit {
   // https://docs.gitlab.com/ce/api/projects.html#fork-project
   public GitHubForkProject() {
     this.copierService.ForkParentRepository(this.GitHubAuthToken)
-    .subscribe(x=>alert(JSON.stringify(x.json())),x=>alert(x));
+    .subscribe(
+      response => alert(JSON.stringify(response)),
+      error => alert(error)
+    );
   }
 
   public LinkGitHub() {
