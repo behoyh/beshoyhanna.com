@@ -1,4 +1,4 @@
-import { ProfileModel } from "../profile/profile.model";
+import { ProfileModel } from "./profile.model";
 
 export class SetUser{
     public static readonly type = '[app] set user';

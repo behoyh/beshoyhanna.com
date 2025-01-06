@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { FirestoreModule, getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { StorageModule } from '@angular/fire/storage';
-import { AuthModule } from '@angular/fire/auth';
+import { StorageModule, getStorage, provideStorage } from '@angular/fire/storage';
+import { AuthModule, getAuth, provideAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,7 +24,7 @@ import { PostDialogComponent } from './forms/post-dialog/post-dialog.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RouterModule } from '@angular/router';
 import { AppRouterModule } from './app.router.module';
-import { APP_BASE_HREF } from '@angular/common';
+import { APP_BASE_HREF, CommonModule, DatePipe } from '@angular/common';
 import { PostsComponent } from './posts/posts.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { NgxsModule } from '@ngxs/store';
@@ -36,7 +36,7 @@ import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { HttpClientModule } from '@angular/common/http';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { PostComponent } from './post/post.component';
-import { OrderModule } from 'ngx-order-pipe';
+import { OrderByPipe } from './shared/pipes/order-by.pipe';
 
 @NgModule({
     declarations: [
@@ -49,8 +49,7 @@ import { OrderModule } from 'ngx-order-pipe';
     ],
     imports: [
         BrowserModule,
-        provideFirebaseApp(() => initializeApp(environment.firebase)),
-        provideFirestore(() => getFirestore()),
+        CommonModule,
         FirestoreModule,
         AuthModule,
         StorageModule,
@@ -67,10 +66,10 @@ import { OrderModule } from 'ngx-order-pipe';
         MatCardModule,
         MatIconModule,
         AppRouterModule,
-        RouterModule.forRoot([], {}),
         MatTabsModule,
         MatStepperModule,
         ReactiveFormsModule,
+        OrderByPipe,
         NgxsModule.forRoot([
             AppState
         ], { developmentMode: !environment.production }),
@@ -80,11 +79,30 @@ import { OrderModule } from 'ngx-order-pipe';
         NgxsRouterPluginModule.forRoot(),
         FroalaEditorModule.forRoot(),
         FroalaViewModule.forRoot(),
-        HttpClientModule,
-        OrderModule
+        HttpClientModule
     ],
-    exports: [MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatDialogModule, MatGridListModule, MatToolbarModule, MatCardModule, MatIconModule, MatTabsModule, MatStepperModule],
-    providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
+    exports: [
+        MatButtonModule,
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSnackBarModule,
+        MatDialogModule,
+        MatGridListModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatIconModule,
+        MatTabsModule,
+        MatStepperModule
+    ],
+    providers: [
+        { provide: APP_BASE_HREF, useValue: '/' },
+        DatePipe,
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideFirestore(() => getFirestore()),
+        provideAuth(() => getAuth()),
+        provideStorage(() => getStorage())
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
